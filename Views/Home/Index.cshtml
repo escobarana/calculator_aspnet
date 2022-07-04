@@ -1,0 +1,38 @@
+﻿// Main page is the calculator
+// /Auth/SignUp  is the signup page
+
+@{
+    ViewData["Title"] = "Calculator";
+    List<char> operators = new List<char>() { '+', '-', '/', '*', '%' };
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <form action="@Url.Action("Index", "Home")" method="post">
+        <input type="number" name="partOne" value="@ViewData["partOne"]"/>
+        <select name="operand">
+        @foreach(char op in operators)
+            {
+                if(ViewData["operand"] != null && op == (char)ViewData["operand"])
+                {
+                    <option value="@op" selected>@op</option>
+
+                }
+                else
+                {
+                    <option value="@op">@op</option>
+                }
+            }
+        </select>
+        <input type="number" name="partTwo"  value="@ViewData["partTwo"]"/>
+        <input type="submit" name="submit" value="calculate" />
+    </form>
+
+    @if(ViewData["result"] != null)
+    {
+        <div class="result">
+            <h5>=</h5>
+            <p>@ViewData["result"]</p>
+        </div>
+    }
+</div>

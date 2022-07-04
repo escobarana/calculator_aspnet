@@ -1,0 +1,14 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using webapplicationtest.Models
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div>
+    @foreach(User usr in (List<User>)ViewData["Users"])
+    {
+        <li>@usr.FirstName @usr.LastName (@usr.email)</li>
+    }
+</div>

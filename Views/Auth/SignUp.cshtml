@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Sign Up";
+}
+if(ViewData["Error"] != null){
+    <div class="alert-danger">
+        <p>@ViewData["Error"]</p>
+    </div>
+}
+
+if(ViewData["Success"] != null &&Aacute; (bool) ViewData["success"]==true){
+    <div class="alert-primary">
+        <p>Your account has been created.</p>
+    </div>
+}
+<form method="post" action="@Url.Action("SignUp","Auth")">
+    <input type="text" class="form-control" placeholder="email" name="email"/>
+    <input type="text" class="form-control" placeholder="firstname" name="firstname"/>
+    <input type="text" class="form-control" placeholder="lastname" name="lastname"/>
+    <input type="password" class="form-control" placeholder="password" name="password"/>
+
+    <input type="submit" class="btn btn-primary" value="Sign Up"/>
+
+</form>
+
